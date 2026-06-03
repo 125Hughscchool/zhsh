@@ -1,0 +1,606 @@
+/* ========================================
+   🎨 ОСНОВНЫЕ СТИЛИ СТРАНИЦ
+   ======================================== */
+
+/* === Контейнеры и секции === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-header {
+    background: linear-gradient(135deg, #002E4B 0%, #0d1f2d 100%);
+    padding: 40px 0;
+    border-bottom: 3px solid #FEC50C;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.page-header h1 {
+    color: #fff;
+    font-size: 32px;
+    margin: 0 0 10px;
+    font-weight: 800;
+}
+.page-header p {
+    color: #a0aec0;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Секции контента === */
+.advice, .eating, .rules, .certification, .ustav, .certification_2024 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+}
+.advice { background: #002E4B; height: 600px; }
+.eating { background: #002E4B; height: 300px; }
+.rules { background: #002E4B; height: auto; }
+.certification { background: #002E4B; height: auto; padding: 50px 0 30px; }
+.ustav { background: #035e97; height: auto; }
+.certification_2024 { background: #002E4B; padding: 50px 0 30px; }
+
+/* === Заголовки === */
+.advice__title {
+    font-size: 35px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+.advice__title--rules,
+.advice__title--vac {
+    color: #002E4B;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+.advice__title--rules { font-size: 40px; }
+.advice__title--vac { font-size: 30px; }
+.advice__title--vac:hover { color: #e84545; }
+
+.text--rules {
+    font-size: 20px;
+    color: #002E4B;
+    margin-top: 20px;
+}
+
+/* === Общие стили текста === */
+p {
+    text-indent: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.5;
+}
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+}
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+}
+h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.color { color: #e84545; }
+
+/* ========================================
+   📋 ТАБЛИЦЫ И ДОКУМЕНТЫ
+   ======================================== */
+
+.content__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.content__table th,
+.content__table td {
+    border: 1px solid #002E4B;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+}
+.table__title {
+    background: #002E4B;
+    color: #fff;
+    font-weight: 600;
+}
+.table__item {
+    background: #fff;
+    color: #000;
+    font-weight: 500;
+}
+
+/* === Карточки документов === */
+.docum__border {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    background: #002E4B;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+.docum__border--solid {
+    border: 2px solid #fff;
+}
+.docum__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+.docum__item {
+    width: 47.5%;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border: 1px solid #002E4B;
+}
+.docum__title {
+    background: #002E4B;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
+}
+.docum__photo {
+    display: block;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.docum__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.docum__text {
+    font-size: 14px;
+    color: #000;
+    font-weight: 300;
+    line-height: 1.5;
+    padding: 15px 5px;
+}
+.docum__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #cdd3dd;
+    border-radius: 0 0 5px 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    padding: 10px 30px;
+}
+
+/* ========================================
+   📰 ПОСТЫ И НОВОСТИ
+   ======================================== */
+
+.post__inner {
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+}
+.post__img {
+    width: 60%;
+    height: 400px;
+    overflow: hidden;
+    border: 3px solid #fff;
+    border-radius: 10px;
+}
+.post__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.post__content {
+    width: 40%;
+    margin-left: 20px;
+    position: relative;
+}
+.post__title {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 30px;
+}
+.post__anons {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+.post__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.post__data time {
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+}
+.posttext__border {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #002E4B;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+.posttext__description {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   💬 КОММЕНТАРИИ
+   ======================================== */
+
+.postsub__title {
+    color: #052C65;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 30px 15px 10px 0;
+}
+.formcomment {
+    display: block;
+    width: 100%;
+    border: 1px solid #052C65;
+    border-radius: 10px;
+    padding: 10px;
+}
+.formcomment__group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.formcomment__control-data {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #BDBDBD;
+    border-radius: 6px;
+    padding: 10px;
+}
+.formcomment__control-data:hover {
+    border: 1px solid #4a93fa;
+    box-shadow: 0 0 0 3px rgb(169, 194, 235);
+}
+.comments { margin-top: 20px; }
+.comments__header {
+    display: flex;
+    margin-bottom: 20px;
+}
+.commenta__avatar {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+}
+.comments__author {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+.comments__name {
+    color: #052C65;
+    font-weight: 500;
+    font-size: 14px;
+}
+.comments__pubdate {
+    font-size: 12px;
+    color: #635a5a;
+}
+.comments__text {
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    color: #052C65;
+}
+.comments__reply {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    color: blue;
+}
+.comments__reply:hover { text-decoration: underline; }
+
+/* ========================================
+   📄 ПАГИНАЦИЯ
+   ======================================== */
+
+.pagination { list-style: none; }
+.pagination__inner {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+}
+.pagination__item { margin: 0 10px; }
+.pagination__link {
+    display: block;
+    height: 40px;
+    text-decoration: none;
+    padding: 0 15px;
+    background: #002E4B;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    transition: background 0.3s;
+}
+.pagination__link:hover {
+    background: #035e97;
+    opacity: 0.9;
+}
+.pagination__link:active {
+    background: #001a2b;
+    box-shadow: 0 0 10px rgba(58, 108, 234, 0.5);
+}
+
+/* ========================================
+   📊 ТАБЛИЦЫ ВАКАНСИЙ / СЕРТИФИКАТОВ
+   ======================================== */
+
+.tableV {
+    margin: 30px 0;
+    border-radius: 10px;
+    border: 1px solid #002E4B;
+    padding: 30px;
+}
+.tableV__category {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.cert_2024 {
+    width: 100%;
+    border: 2px solid #002E4B;
+    text-align: center;
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 10px;
+}
+.cert_2024__item {
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+}
+.docum__bordertable {
+    border: 1px solid #002E4B;
+    padding: 20px;
+    background: #e4e4e4;
+    margin-bottom: 30px;
+}
+.docum__titleinner {
+    background: #d19b06;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+/* ========================================
+   🏛️ ИСТОРИЯ ШКОЛЫ
+   ======================================== */
+
+.history__img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0, 46, 75, 0.7);
+}
+.history__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 3px;
+    border-radius: 12px;
+}
+.history__photo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.history__imgsm {
+    width: 50%;
+    overflow: hidden;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0, 46, 75, 0.7);
+}
+.history__dir {
+    border-top: 6px solid #002E4B;
+    padding: 20px;
+    margin: 20px 0;
+}
+.history__dir-Item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+.history__dirinfo {
+    width: 30%;
+    overflow: hidden;
+}
+.history__dirinfo img { width: 100%; }
+
+/* ========================================
+   🆕 ВЫПАДАЮЩИЕ МЕНЮ (НОВОЕ)
+   ======================================== */
+
+.introIn__item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Скрываем меню по умолчанию */
+.introIn__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #002E4B;
+    border: 2px solid #FEC50C;
+    border-radius: 8px;
+    padding: 8px 0;
+    width: 230px;
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    list-style: none;
+    margin: 12px 0 0 0;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Показываем при наведении */
+.introIn__item:hover .introIn__dropdown {
+    display: block;
+}
+
+.introIn__dropdown li {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.introIn__dropdown li:last-child {
+    border-bottom: none;
+}
+
+.introIn__dropdown a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.introIn__dropdown a:hover {
+    background: #FEC50C;
+    color: #002E4B !important;
+    padding-left: 25px;
+}
+
+/* === СТИЛИ ДЛЯ CUSTOM SVG ИКОНОК === */
+.introIn__icon .custom-svg {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.introIn__item:hover .introIn__icon .custom-svg {
+    color: #FEC50C !important;
+    transform: scale(1.1);
+}
+
+.introIn__icon .custom-svg path,
+.introIn__icon .custom-svg circle {
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+/* === АДАПТИВ ДЛЯ МОБИЛЬНЫХ === */
+@media (max-width: 768px) {
+    .introIn__dropdown {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 10px;
+        display: none;
+    }
+    .introIn__item:hover .introIn__dropdown {
+        display: block;
+    }
+    
+    .post__inner {
+        flex-direction: column;
+    }
+    .post__img,
+    .post__content {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    .history__imgsm {
+        width: 100%;
+    }
+    .docum__item {
+        width: 100%;
+    }
+}
+/* === СТИЛИ ДЛЯ PNG ИКОНОК === */
+.introIn__icon img.introicon__img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1); /* Делает иконку белой */
+}
+
+.introIn__item:hover .introIn__icon img.introicon__img {
+    transform: scale(1.1);
+    filter: brightness(0) saturate(100%) invert(76%) sepia(98%) saturate(734%) hue-rotate(358deg) brightness(101%) contrast(101%); /* Золотой цвет #FEC50C */
+}
+/* === СТИЛИ ДЛЯ SVG ИКОНОК === */
+.introIn__icon img.introicon__img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    /* Если SVG внутри белый — он останется белым */
+    /* Если нужно изменить цвет, раскомментируй filter ниже: */
+    /* filter: brightness(0) invert(1); */
+}
+
+.introIn__item:hover .introIn__icon img.introicon__img {
+    transform: scale(1.1);
+    /* Если нужно сделать золотым при наведении: */
+    /* filter: brightness(0) saturate(100%) invert(76%) sepia(98%) saturate(734%) hue-rotate(358deg) brightness(101%) contrast(101%); */
+}

@@ -1,0 +1,161 @@
+body{
+	
+	font-size:13px; 
+	font-family:system-ui,-apple-system,"Segoe UI",
+    Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",
+    Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	position: relative;
+	background-color: #002E4B;
+	width: 100%;
+	height: 0 auto;
+	
+}
+
+main {
+	display: block;
+  	justify-content: center;
+  	align-items: center;
+	text-align: center;
+  	height: 100%;
+	margin-top: 100px;
+  	
+}
+
+.container {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	width: 25rem;
+	height: auto;
+	
+	padding: 30px 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	margin-top: 30px;
+	border: 5px solid #C2DBFE;
+	box-shadow: 0px 0 10px 0 rgb(169, 194, 235), 0 5px 2px;
+}
+
+.container--two {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 42rem;
+	height: auto;
+	
+	padding: 30px 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	margin-top: 30px;
+	border: 5px solid #C2DBFE;
+	box-shadow: 0px 0 10px 0 rgb(190, 200, 216), 0 2px 2px;
+}
+
+.title__account {
+	font-size: 35px;
+	font-weight: 600;
+	color: #ffff;
+	
+}
+.form__header {
+	width: 350px;
+	margin-right: 0;
+}
+
+.header__logo {
+	display: block;
+	width: 100px;
+	height: auto;
+	margin: 0 auto;
+
+}
+
+.header__logo img {
+	vertical-align: top;
+	max-width: 100%;
+	height: auto;
+	overflow: hidden;
+	
+}
+
+.header__title {
+	font-size: 16px;
+	font-weight: 500;
+	color: #052C65;
+	margin-top: 15px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #C2DBFE;
+}
+
+
+p {
+	margin-bottom: 5px;
+	font-size: 16px;
+}
+.form--auht {
+	margin-top: 15px;
+	border-left: 1px solid #C2DBFE;
+	padding-left: 15px;
+}
+
+.form {
+	align-items: center;
+}
+
+.form__group {
+	margin: 5px 0;
+}
+
+.form-control--md {
+	width: 250px;
+}
+
+
+.cabinet__form {
+	display: grid;
+	justify-content: center;
+}
+
+.btn {
+	margin: 15px 0;
+}
+
+.form__footer-list {
+	
+	list-style-type: none;
+	padding: 10px 0;
+	border-top: 1px solid #C2DBFE;
+	border-bottom: 1px solid #C2DBFE;
+
+}
+
+.form__footer-list li a {
+	text-decoration: none;
+	color: #052C65;
+}
+
+.form__footer-list li a:hover {
+	text-decoration: underline;
+}
+
+.form__footer--bb {
+	list-style-type: none;
+	padding: 10px 0;
+	border-top: 1px solid #C2DBFE;
+	
+
+}
+
+.form__footer--bb li a {
+	text-decoration: none;
+	color: #052C65;
+}
+
+.form__footer--bb li a:hover {
+	text-decoration: underline;
+}
+
+
+.form__control {
+	width: 220px;
+}
