@@ -1,0 +1,148 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$root = __DIR__ . '/../../';
+require_once $root . 'path.php';
+require_once $root . 'app/database/connect.php';
+global $pdo;
+
+if (!isset($_SESSION['id'])) {
+    header('Location: ' . BASE_URL . 'account/signin.php');
+    exit;
+}
+
+// 🗑️ ЖАЗБАНЫ ӨШІРУ
+if (isset($_GET['delete_id'])) {
+    $delete_id = (int)$_GET['delete_id'];
+    try {
+        $stmt = $pdo->prepare("SELECT img FROM posts WHERE id = ?");
+        $stmt->execute([$delete_id]);
+        $post_img = $stmt->fetchColumn();
+        if ($post_img) {
+            $img_path = $root . 'assets/img/posts/' . $post_img;
+            if (file_exists($img_path)) unlink($img_path);
+        }
+        $pdo->prepare("DELETE FROM posts WHERE id = ?")->execute([$delete_id]);
+        header('Location: index.php?msg=' . urlencode('✅ Жазба сәтті жойылды!') . '&type=success');
+        exit;
+    } catch (Exception $e) {
+        $error_msg = '❌ Қате: ' . $e->getMessage();
+    }
+}
+
+// 📥 ТІЗІМДІ ЖҮКТЕУ
+$search = $_GET['search'] ?? '';
+$page = max(1, (int)($_GET['page'] ?? 1));
+$limit = 20;
+$offset = ($page - 1) * $limit;
+
+try {
+    $count = $pdo->prepare("SELECT COUNT(*) FROM posts WHERE title LIKE ?");
+    $count->execute(["%{$search}%"]);
+    $total = $count->fetchColumn();
+    $total_pages = ceil($total / $limit);
+
+    $stmt = $pdo->prepare("
+        SELECT id, title, anons, img, status, created_at 
+        FROM posts 
+        WHERE title LIKE ? 
+        ORDER BY id DESC 
+        LIMIT $limit OFFSET $offset
+    ");
+    $stmt->execute(["%{$search}%"]);
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    die('❌ Дерекқор қатесі: ' . $e->getMessage());
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <?php include __DIR__ . '/../temp/admin_head.php'; ?>
+    <title>Жазбаларды басқару</title>
+    <style>
+        .search-form { margin: 20px 0; display: flex; gap: 10px; }
+        .search-form input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #ccc; }
+        .search-form button { padding: 10px 20px; background: #002E4B; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+        .alert { padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; }
+        .alert-success { background: rgba(72,187,120,0.2); border: 1px solid #48bb78; color: #9ae6b4; }
+        .alert-error { background: rgba(229,62,62,0.2); border: 1px solid #e53e3e; color: #fc8181; }
+        .btn-edit { color: #4ade80; font-weight: 600; text-decoration: none; margin-right: 10px; }
+        .btn-delete { color: #fc8181; font-weight: 600; text-decoration: none; }
+        .btn-edit:hover, .btn-delete:hover { text-decoration: underline; }
+        .anons-cell { max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #a0aec0; }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="container__block">
+        <?php include __DIR__ . '/../temp/admin_header.php'; ?>
+        <?php include __DIR__ . '/../temp/admin_sidebar.php'; ?>
+        <main class="main">
+            <div class="container">
+                <div class="post">
+                    <div class="post__content">
+                        <h1>📝 Жазбаларды басқару</h1>
+                        
+                        <?php if (isset($_GET['msg'])): ?>
+                            <div class="alert alert-<?php echo htmlspecialchars($_GET['type'] ?? 'success'); ?>">
+                                <?php echo htmlspecialchars($_GET['msg']); ?>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div style="margin-bottom:20px;">
+                            <a href="created.php" class="btn btn--blue btn--rounded">➕ Жаңа жазба қосу</a>
+                        </div>
+                        
+                        <form class="search-form" method="get">
+                            <input type="text" name="search" placeholder="Тақырыбы бойынша іздеу..." value="<?= htmlspecialchars($search) ?>">
+                            <button type="submit">🔍 Іздеу</button>
+                        </form>
+                        
+                        <table class="content__table">
+                            <tr class="table__inner">
+                                <th class="table__title">ID</th>
+                                <th class="table__title">Тақырыбы</th>
+                                <th class="table__title">Анонс</th>
+                                <th class="table__title">Күні</th>
+                                <th class="table__title">Күйі</th>
+                                <th class="table__title">Әрекеттер</th>
+                            </tr>
+                            <?php if (!empty($posts)): ?>
+                                <?php foreach ($posts as $p): ?>
+                                <tr class="table__inner">
+                                    <td class="table__item"><?= $p['id'] ?></td>
+                                    <td class="table__item" style="font-weight:500;"><?= htmlspecialchars($p['title']) ?></td>
+                                    <td class="table__item anons-cell"><?= htmlspecialchars($p['anons'] ?? '—') ?></td>
+                                    <td class="table__item"><?= date('d.m.Y', strtotime($p['created_at'])) ?></td>
+                                    <td class="table__item"><?= $p['status'] == 1 ? '✅ Жарияланды' : '⏳ Жасырын' ?></td>
+                                    <td class="table__item">
+                                        <a href="edit.php?id=<?= $p['id'] ?>" class="btn-edit">✏️ Өңдеу</a>
+                                        <a href="?delete_id=<?= $p['id'] ?>" class="btn-delete" onclick="return confirm('«<?= addslashes(htmlspecialchars($p['title'])) ?>» жазбасын жойғыңыз келе ме?')">🗑️ Өшіру</a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr><td colspan="6" style="text-align:center;padding:30px;color:#666;">Жазбалар табылмады</td></tr>
+                            <?php endif; ?>
+                        </table>
+                        
+                        <?php if ($total_pages > 1): ?>
+                        <div class="pagination" style="margin-top:30px;">
+                            <ul class="pagination__inner">
+                                <?php for ($pg = 1; $pg <= $total_pages; $pg++): ?>
+                                    <li class="pagination__item"><a class="pagination__link" href="?page=<?= $pg ?><?= $search ? '&search=' . urlencode($search) : '' ?>"><?= $pg ?></a></li>
+                                <?php endfor; ?>
+                            </ul>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>
